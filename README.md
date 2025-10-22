@@ -24,11 +24,11 @@
 * Altering runs:
     * Iterations in Q# are optimally calculated on line 9. The result of the function can be overwritten if a value is assigned after the function has been called, or by replacing the function call itself with a value. 
     
-    * Iterations in Qiskit are optimally calculated, just as in Q#. The functions can be ignored if manually choosing iterations is written either on line 14 (replacing function call), or by overwriting value below. 
+    * Iterations in Qiskit are optimally calculated, just as in Q#. This function can be ignored by manually writing number of iterations on line 14 (replacing function call), or by overwriting value after calling function. 
  
 ### What causes different results, and what changes:
-* Manually changing iterations in Q#
-    * Manually altering iterations in Q# to the 'unoptimal' causes results to differ. The result becomes both unpredictable and inconsistent.
+* Manually changing iterations in
+    * Manually altering iterations to the 'unoptimal' causes results to differ. The result becomes both unpredictable and inconsistent.
 
 * Switching sequence of gate-applications
     * In Q#, you can switch line 58 and 59 to reorder the application of the X and H gates. Switching these lines produces unpredictable results. This can be tested with the 'main-altered.qs' file.
