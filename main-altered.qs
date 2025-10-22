@@ -6,12 +6,7 @@ import Microsoft.Quantum.Diagnostics.*;
 
 operation Main() : Result[] {
     let nQubits = 5;
-    // Automatic iterations, produces consistent results
-    // [Zero, One, Zero, One, Zero]
     let iterations = CalculateOptimalIterations(nQubits);
-
-    // Manual iterations chooser, produces unpredictable results
-    //let iterations = 8;
 
     Message($"Number of iterations: {iterations}");
 

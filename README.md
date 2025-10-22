@@ -22,8 +22,9 @@
  
 ### Instructions:
 * Altering runs:
-    * To alter runs / iterations in Q#, you simply specify how many qubits you wish to test on (line 8), then the 'CalculateOptimalIterations' function will do the rest
-    * You can not alter iterations in the Qiskit implementation of Grover (yet).
+    * Iterations in Q# are optimally calculated on line 9. The result of the function can be overwritten if a value is assigned after the function has been called, or by replacing the function call itself with a value. 
+    
+    * Iterations in Qiskit are optimally calculated, just as in Q#. The functions can be ignored if manually choosing iterations is written either on line 14 (replacing function call), or by overwriting value below. 
  
 ### What causes different results, and what changes:
 * Manually changing iterations in Q#
@@ -32,5 +33,5 @@
 * Switching sequence of gate-applications
     * In Q#, you can switch line 58 and 59 to reorder the application of the X and H gates. Switching these lines produces unpredictable results. This can be tested with the 'main-altered.qs' file.
 
-    * In Qiskit, you can switch line 16 and all following lines until 23 (lines 16-22). Switching lines 18 and 19 will produce inconsistent results, while switching 16 and 17 will produce a consistent, but flipped result. Switching 21 and 22 will also produce flipped results. This can be tested with the 'main-altered.py' file.
+    * In Qiskit, you can switch line 25 and all following lines until 32 (lines 25-31). Switching lines 27 and 28 will produce inconsistent results, while switching 25 and 26 will produce a consistent, but flipped result. Switching 30 and 31 will also produce flipped results. This can be tested with the 'main-altered.py' file.
  
