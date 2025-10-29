@@ -31,7 +31,7 @@
     * Manually altering iterations to the 'unoptimal' causes results to differ. The result becomes both unpredictable and inconsistent.
 
 * Switching sequence of gate-applications
-    * In Q#, you can switch line 58 and 59 to reorder the application of the X and H gates. Switching these lines produces unpredictable results. This can be tested with the 'main-altered.qs' file.
+    * In Q#, you can switch line 53 and 54 to reorder the application of the X and H gates. Switching these lines produces unpredictable results. This can be tested with the 'main-altered.qs' file.
 
     * In Qiskit, you can switch line 25 and all following lines until 32 (lines 25-31). Switching lines 27 and 28 will produce inconsistent results, while switching 25 and 26 will produce a consistent, but flipped result. Switching 30 and 31 will also produce flipped results. This can be tested with the 'main-altered.py' file.
  
