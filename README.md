@@ -1,4 +1,4 @@
-# Testing enviroment - Behavioral changes of quantum applycations after refactoring and line reordering
+# Testing enviroment - Behavioral changes of quantum applications after refactorings and line reordering
 
 ### Tools used in project:
 * Python 3.13.5
@@ -10,16 +10,25 @@
     * Azure Quantum Development Kit, v1.21.0
 
 
+### Structure:
+* To enter projects and view changes, please move to the folders containing fitting language files. There is a dedicated folder for each Language, the [Q#](./Q/) folder holds all files related to Q#, and the [Qiskit](./Qiskit/) folder holds all files related to Qiskit. 
+
+* Inside each of the language folders, there are a ```results.md``` file, this contains all changes made and the results. In addition to this, there are folders for all the changes made and their categories. For instance, all changes related to line-switching is in their own files in the ```File Switches``` folder. All files in these folders are edited to perform the way explained in the language's ```results.md``` file.
+
+* To run the files and view the results, follow instructions below. 
+
+
 ### Procedure:
 
 #### Q#:
-* Run in Visual Studio Code using Azure QKD
+* Run using Visual Studio Codes 'run' while viewing the file you wish to execute, using the VSC Azure QKD.
 
 #### Qiskit:
-* Run 'python3 main.py' in terminal
-    * Replace python version with locally installed, may for instance be 'python main.py'
+* Run 'python3 main.py' in terminal,
+    * Replace python version with locally installed, may for instance be 'python main.py'.
+    * Replace main.py with the path to the file you wish to execute.
 
- 
+<!-- 
 ### Instructions:
 * Altering runs:
     * Iterations in Q# are optimally calculated on line 9. The result of the function can be overwritten if a value is assigned after the function has been called, or by replacing the function call itself with a value. 
@@ -31,7 +40,26 @@
     * Manually altering iterations to the 'unoptimal' causes results to differ. The result becomes both unpredictable and inconsistent.
 
 * Switching sequence of gate-applications
-    * In Q#, you can switch line 53 and 54 to reorder the application of the X and H gates. Switching these lines produces unpredictable results. This can be tested with the 'main-altered.qs' file.
+    * In Q#, you can switch line 53 and 54 to reorder the application of the X and H gates:
+    
+    ```
+    X(outputQubit);
+    H(outputQubit);
+    ```
+    
+    Switching these lines produces unpredictable results. This can be tested with the [Line Switch](Q/line-switch.qs) Q# file.
 
-    * In Qiskit, you can switch line 25 and all following lines until 32 (lines 25-31). Switching lines 27 and 28 will produce inconsistent results, while switching 25 and 26 will produce a consistent, but flipped result. Switching 30 and 31 will also produce flipped results. This can be tested with the 'main-altered.py' file.
- 
+    * In Qiskit, you can switch line 25 and all following lines until 32 (lines 25-31). 
+    
+    ```
+    diffuser.h(range(n))
+    diffuser.x(range(n))
+    diffuser.cx(0, 1)
+    diffuser.h(1)
+    diffuser.h(1)
+    diffuser.x(range(n))
+    diffuser.h(range(n))
+    ```
+
+    Switching lines 27 and 28 will produce inconsistent results, while switching 25 and 26 will produce a consistent, but flipped result. Switching 30 and 31 will also produce flipped results. This can be tested with the [Line Switch](./Qiskit/line-switch.py) Qiskit file.
+--> 

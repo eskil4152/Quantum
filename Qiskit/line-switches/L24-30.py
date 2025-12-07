@@ -4,11 +4,10 @@ from qiskit_aer import Aer
 from qiskit.visualization import plot_histogram
 
 n = 2
-iterations = None;
+iterations = None
 
 def calculate_optimal_iterations(n_qubits, marked=1):
     total_states = 2 ** n_qubits
-    # Grover formula: floor(π/4 * sqrt(N/M))
     return max(1, int(math.floor((math.pi / 4) * math.sqrt(total_states / marked))))
 
 iterations = calculate_optimal_iterations(n)
@@ -24,8 +23,8 @@ oracle_gate = oracle.to_gate(label="Oracle")
 diffuser = QuantumCircuit(n)
 diffuser.h(range(n))
 diffuser.x(range(n))
-diffuser.cx(0, 1)
 diffuser.h(1)
+diffuser.cx(0, 1)
 diffuser.h(1)
 diffuser.x(range(n))
 diffuser.h(range(n))

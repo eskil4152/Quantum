@@ -22,7 +22,11 @@ operation GroverSearch(
 
     use qubits = Qubit[nQubits];
 
-    PrepareUniform(qubits);
+    // PrepareUniform(qubits);
+
+    for q in qubits {
+        H(q);
+    }
 
     for _ in 1..iterations {
         phaseOracle(qubits);
@@ -50,8 +54,8 @@ operation ReflectAboutMarked(inputQubits : Qubit[]) : Unit {
         // We initialize the outputQubit to (|0⟩ - |1⟩) / √2, so that
         // toggling it results in a (-1) phase.
 
-        H(outputQubit);
         X(outputQubit);
+        H(outputQubit);
 
         // Flip the outputQubit for marked states.
         // Here, we get the state with alternating 0s and 1s by using the X
@@ -86,6 +90,8 @@ operation ReflectAboutUniform(inputQubits : Qubit[]) : Unit {
         // Now that we've transformed the uniform superposition to the
         // all-ones state, reflect about the all-ones state, then let the
         // within/apply block transform us back.
-        ReflectAboutAllOnes(inputQubits);
+        
+        //ReflectAboutAllOnes(inputQubits);
+        Controlled Z(Most(inputQubits), Tail(inputQubits));
     }
 }
